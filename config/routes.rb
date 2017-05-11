@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
-  scope path: 'api' do
-    resources :shows
-  end
+  devise_for :users, :controllers => {sessions: 'sessions', registrations: 'registrations'}
+  resources :users
+
+  get 'shows' => 'shows#index'
+  get 'users' => 'users#index'
 
 end
